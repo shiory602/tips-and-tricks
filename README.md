@@ -2,4 +2,4 @@
 
 ## Internet
 
-- (Internet)[./internet]
+- [Internet](./front-end-tips/internet/README.md)
