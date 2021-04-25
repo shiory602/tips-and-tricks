@@ -1,4 +1,4 @@
-### How does the internet work?
+# How does the internet work?
 
 ## インターネットはどうやってつながっていますか？
 
@@ -79,6 +79,7 @@ Local Area Network Port): 家庭や学校のPC（内部側）を接続
 ### 代表的なポート番号
 
 | ポート番号 | 通信	| プロトコル | 内容 |
+| --- | --- | --- | --- |
 | 20 | TCP | FTP（データ） | FTPによるデータ送信 |
 | 21 | TCP | FTP（制御） | 上記FTPの制御 |
 | 22 | TCP | SSH | サーバとの暗号化通信 |
@@ -93,5 +94,5 @@ Local Area Network Port): 家庭や学校のPC（内部側）を接続
 | 443 | TCP | HTTPS | ホームページ暗号化閲覧 |
 | 587 | TCP | Submission | メール送信 |
 
-最新の詳細情報は、ポート番号を管理しているIANAの一覧を参照。
-ポートの情報元; [CMAN](https://www.cman.jp/network/term/port/)
+最新の詳細情報は、ポート番号を管理している[IANAの一覧](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml)を参照。
+ポートの情報元: [CMAN](https://www.cman.jp/network/term/port/)

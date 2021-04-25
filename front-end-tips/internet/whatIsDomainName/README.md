@@ -1,4 +1,4 @@
-### What is Domain Name?
+# What is Domain Name?
 
 ## ドメインとは何ですか？
 
