@@ -172,8 +172,8 @@ Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-eval' 'uns
 
 
 参照: 
-[MDNのHTTP レスポンスステータスコード](https://developer.mozilla.org/ja/docs/Web/HTTP/Status)
-[MDNのHTTPメッセージ](https://developer.mozilla.org/ja/docs/Web/HTTP/Messages)
+[MDNのHTTP レスポンスステータスコード](https://developer.mozilla.org/ja/docs/Web/HTTP/Status), 
+[MDNのHTTPメッセージ](https://developer.mozilla.org/ja/docs/Web/HTTP/Messages), 
 [MDNのHTTPの概要](https://developer.mozilla.org/ja/docs/Web/HTTP/Overview)
 
 
@@ -186,12 +186,12 @@ Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-eval' 'uns
 ### ユーザーフレンドリーな404ページの作成
 ソフト404エラーへの対策としてできること
 
-> ユーザーに対して、探しているページが見つからないことを明確に伝えます。親しみやすく魅力的な言葉を使用します。
-> 404 ページを、サイトのその他の部分と同じデザイン（ナビゲーションを含む）にします。
-> 最も人気のある記事や投稿へのリンクの他、ホームページへのリンクを追加します。
-> 無効なリンクを報告する方法をユーザーに提供することを検討します。
-> この 404 ページがどれほどきれいにデザインされ、役に立つものであっても、Google 検索結果に表示したいとは誰も思わないでしょう。404 ページが Google や他の検索エンジンのインデックスに登録されないようにするため、存在しないページがリクエストされたときにウェブサーバーが実際の 404 HTTP ステータス コードを返すことを確認します。
-> アドレス変更ツールを使用して、Google にサイトの移転を通知します。
+> - ユーザーに対して、探しているページが見つからないことを明確に伝えます。親しみやすく魅力的な言葉を使用します。
+> - 404 ページを、サイトのその他の部分と同じデザイン（ナビゲーションを含む）にします。
+> - 最も人気のある記事や投稿へのリンクの他、ホームページへのリンクを追加します。
+> - 無効なリンクを報告する方法をユーザーに提供することを検討します。
+> - この 404 ページがどれほどきれいにデザインされ、役に立つものであっても、Google 検索結果に表示したいとは誰も思わないでしょう。404 ページが Google や他の検索エンジンのインデックスに登録されないようにするため、存在しないページがリクエストされたときにウェブサーバーが実際の 404 HTTP ステータス コードを返すことを確認します。
+> - アドレス変更ツールを使用して、Google にサイトの移転を通知します。
 
 引用元: [Google検索セントラル](https://developers.google.com/search/docs/advanced/crawling/custom-404-pages?hl=ja&visit_id=637550123061910413-2858748276&rd=1)
 
