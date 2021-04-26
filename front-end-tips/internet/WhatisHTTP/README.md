@@ -36,15 +36,7 @@ Webではほとんどの場合**GET**で、この場合、HTTPリクエストで
     - URL: リクエストの対象`http://~`
     - HTTPのバージョン: `HTTP/1.1`
 
-2. ２行目以降 = **ヘッダー**(リクエストの詳細情報)[参照](https://triple-underscore.github.io/RFC7231-ja.html#section-5)
-    - Host: ドメイン名と任意でサーバーが開いているTCP Port番号を指定できる。
-    - User-Agent: ブラウザのバージョン情報等
-    - Referer: 遷移元のページ
-    - Cookie: ログイン状態を続けるためのデータ
-    - Accept: ブラウザが想定する(利用可能な)MIMEのタイプ
-    - Accept-Language: ブラウザが想定する(利用可能な)言語
-    - Accept-Encoding: ブラウザがデコードできるエンコーディング形式
-    - Accept-Charset: 画像の種類や、言語、文字コード等
+2. ２行目以降 = **ヘッダー**(リクエストの詳細情報)
 
 3. 空白以降 = ボディ(POSTの場合のみ)
     - 画面での入力内容
@@ -122,9 +114,6 @@ title=studying about HTTP&author=xxxxxx
     - ステータスコード: 200
     - 付随するテキスト: OK
 2. ２行目以降 = **ヘッダー**(レスポンスの詳細情報)
-    - Content-Type: 出力するデータタイプ
-    - Server: Webサーバーの名前とバージョン等
-    - Expires: 取得したデータを再度サーバーに問い合わせなくてもブラウザが再利用していい期限（キャッシュの制御に使われる）
 3. 空白以降 = **ボディ**(HTMLや画像等が入る)
 
 (例)
@@ -151,7 +140,14 @@ Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-eval' 'uns
 ```
 
 
-### HTTPレスポンスのステータス番号
+
+
+# HTTPステータスコードとは何ですか？何のために使われますか？
+
+> HTTPステータスコードとは、WebブラウザやクローラーがURLにアクセスしようとした際、Webサーバーから返ってくるレスポンスの種類を示す3桁の数字のこと。
+> この3桁の数値を**HTMLを受信する前に**受信することで、ブラウザは正しい処理ができるようになる。
+
+## HTTPレスポンスのステータス番号
 
 主なHTTPレスポンスのステータス番号の一覧。
 - 100番台 -> 情報
@@ -172,19 +168,79 @@ Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-eval' 'uns
 | 500 | Internal Server Error: スクリプトなどで内部のエラーが発生しています。 |
 | 502 | Bad Gateway: ゲートウェイが無効なレスポンスを受け取りました。 |
 | 503 | Service Unavailable: サービスが提供できません。Webサーバーに負荷がかかりすぎたときなどに表示されます。 |
-
-参照：[ITSakura](https://itsakura.com/network-http-get-post)[Qiita記事](https://qiita.com/koheiyamaguchi0203/items/5777c4653a01ae4c7b06)
-    [MDNのHTTP レスポンスステータスコード](https://developer.mozilla.org/ja/docs/Web/HTTP/Status)
-    [MDNのHTTPメッセージ](https://developer.mozilla.org/ja/docs/Web/HTTP/Messages)
-    [MDNのHTTPの概要](https://developer.mozilla.org/ja/docs/Web/HTTP/Overview)
-
+参照: 
+[MDNのHTTP レスポンスステータスコード](https://developer.mozilla.org/ja/docs/Web/HTTP/Status)
+[MDNのHTTPメッセージ](https://developer.mozilla.org/ja/docs/Web/HTTP/Messages)
+[MDNのHTTPの概要](https://developer.mozilla.org/ja/docs/Web/HTTP/Overview)
 
 
-# HTTPステータスコードとは何ですか？何のために使われますか？
+
+### 【!】ソフト404エラー
+**ソフト404**とは、通常のNot Foundの404のステータスコードとは異なり、404のページのように見えるがステータスコードが**200 OK**で処理されているものである。
+問題点としてソフト404エラーはステータスコードが200で返されているため、検索エンジンがクロールしてしまうことが挙げられる。
+その結果、本来コンテンツがあってクロールされるべきページのクロールが遅れたり、クロールの頻度が減ってしまうなどが考えられる。
+
+### ユーザーフレンドリーな404ページの作成
+ソフト404エラーへの対策としてできること
+
+> ユーザーに対して、探しているページが見つからないことを明確に伝えます。親しみやすく魅力的な言葉を使用します。
+> 404 ページを、サイトのその他の部分と同じデザイン（ナビゲーションを含む）にします。
+> 最も人気のある記事や投稿へのリンクの他、ホームページへのリンクを追加します。
+> 無効なリンクを報告する方法をユーザーに提供することを検討します。
+> この 404 ページがどれほどきれいにデザインされ、役に立つものであっても、Google 検索結果に表示したいとは誰も思わないでしょう。404 ページが Google や他の検索エンジンのインデックスに登録されないようにするため、存在しないページがリクエストされたときにウェブサーバーが実際の 404 HTTP ステータス コードを返すことを確認します。
+> アドレス変更ツールを使用して、Google にサイトの移転を通知します。
+引用元: [Google検索セントラル](https://developers.google.com/search/docs/advanced/crawling/custom-404-pages?hl=ja&visit_id=637550123061910413-2858748276&rd=1)
+
+
+
+
 
 # HTTPヘッダーとは何ですか？
 
+> HTTPリクエストヘッダやHTTPレスポンスヘッダのこと。
+> ホームページを表示する際にやり取りするデータの一部で、そのデータに関する説明書きが書いてある。
 
+書式
+```
+【フィールド名】:【内容】
+```
+
+## HTTPリクエストヘッダ
+HTTPリクエストの２行目以降で**お願いごとやお願い元に関するあれこれ**が書かれている
+
+[参照](https://triple-underscore.github.io/RFC7231-ja.html#section-5)
+- Host: ドメイン名と任意でサーバーが開いているTCP Port番号を指定できる。
+- User-Agent: ブラウザの種類やOS情報、検索エンジンクローラの名前など
+- Referer: 遷移元のページ
+- Cookie: ブラウザを特定するための小さなデータ。HTTPヘッダーに含まれてサーバーに送信されている。
+- If-Modified-Since / If-None-Match: ブラウザに保存されているローカルキャッシュが変更されているかどうか。
+- Accept: ブラウザが想定する(利用可能な)MIMEのタイプ
+- Accept-Language: ブラウザが想定する(利用可能な)言語
+- Accept-Encoding: ブラウザがデコードできるエンコーディング形式
+- Accept-Charset: 画像の種類や、言語、文字コード等
+
+
+
+## HTTPレスポンスヘッダ
+HTTPレスポンスの２行目以降で**ステータスラインに書ききれないレスポンスの情報**が書かれている
+
+- HTTPのバージョン: どのバージョンを使用して通信するか。
+- Content-Type: 出力するデータタイプがHTMLか画像か、文字コードなどといった情報
+- Server: Webサーバーの名前とバージョン等
+- Expires: 取得したデータを再度サーバーに問い合わせなくてもブラウザが再利用していい期限（キャッシュの制御に使われる）
+- Last-Modified / ETag
+データの最終更新日時と更新チェック情報。
+- Location
+リクエストと違う場所からデータを取得した場合の新しい場所のURL。いわゆるリダイレクト先を示す情報。
+
+
+***
 
 ### 用語集
 - **パラメータ**: サーバーに受け渡すデータ(DBからのデータを判別するための`ID`や、DBに登録するための「ユーザーが入力したデータ」など)
+- **クローラー**: 検索ロボット、サーチボットとも呼ばれ、インターネットにつながっているWebサイト・画像・動画などの情報を収集し、検索データベースに保管するプログラムのこと。這う（クロール：crawl）ように収集していくことからクローリングと名付けられた。
+- **MIMEのタイプ**: メールやホームページのファイルつくファイル情報（`.txt`や`.html`など）
+
+
+
+その他参照：[ITSakura](https://itsakura.com/network-http-get-post)[Qiita記事](https://qiita.com/koheiyamaguchi0203/items/5777c4653a01ae4c7b06)
