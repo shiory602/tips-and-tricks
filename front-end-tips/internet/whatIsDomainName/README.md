@@ -155,8 +155,3 @@ gTLDの多くは通常、 複数のレジストラ経由で空いていれば誰
 [カゴヤのサーバー研究室](https://www.kagoya.jp/howto/webhomepage/01/),
 [DS Magazine](https://ds-b.jp/media/pages/264/),
 [ドメインの取得手順 - DS Magazine](https://www.kagoya.jp/howto/webhomepage/02/)
-
-***
-
-## 用語集
-### 
