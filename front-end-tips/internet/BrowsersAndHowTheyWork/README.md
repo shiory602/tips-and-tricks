@@ -5,6 +5,11 @@
 > 各ホームページ（Webサイト）はHTMLやCSSなどのプログラミング言語で構成されており、それらのプログラミング言語で構成されたソースコードを読み込み、解釈して、一般の方でも見やすいWebページとして表示するのが、ブラウザの主な役割・機能。
 参照: [DSマガジン](https://ds-b.jp/media/what-is-web-browser/)
 
+
+***
+
+
+
 ## ブラウザについて
 
 ### ブラウザでできること
@@ -135,29 +140,14 @@ CSSも同様に処理され**CSSOMツリー**が構築される。
 
 
 参照元:
-[Gigazine](https://gigazine.net/news/20190624-how-web-works/#3)
-[ブラウザレンダリングの仕組み](https://qiita.com/sasakiki/items/91dcc8b50d7a61ce98bc)
-より詳細 → [ブラウザの仕組み: 最新ウェブブラウザの内部構造](https://www.html5rocks.com/ja/tutorials/internals/howbrowserswork/#Painting)
+[Gigazine](https://gigazine.net/news/20190624-how-web-works/#3), 
+[ブラウザレンダリングの仕組み](https://qiita.com/sasakiki/items/91dcc8b50d7a61ce98bc), 
+[ブラウザの仕組み: 最新ウェブブラウザの内部構造](https://www.html5rocks.com/ja/tutorials/internals/howbrowserswork/#Painting)
 
 
 *** 
 
 ### 用語集
-
-## <a></a>(アンカー)
-はさまれた文言がリンク
-
-## href(Hypertext Reference)
-ハイパーテキストの仕組みを使ってリンク先を示す書式
-
-## IPアドレス
-**IP**とはインターネットプロトコル。Webサーバー上の機械用の住所（数字）
-
-## ドメインネーム
-HTMLソース上で人間がわかりやすいように付けた住所
-
-## DNS
-ドメインネームシステム。IPアドレスとドメインネームの組み合わせを管理しているデータベースで、安全性のため、世界中に分散して設置され互いに会話して情報を伝えあっている。
 
 ## レンダリング
 レスポンス以降に受け取るHTML,CSS,Javascriptを処理して画面に表示する一連の流れ
