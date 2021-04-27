@@ -47,7 +47,7 @@ Webではほとんどの場合**GET**で、この場合、HTTPリクエストで
 ### GETメソッド
 - クエリ文字列は大量のデータを送るのには向いていない。
 - クエリ文字列はブラウザのURL欄に表示される。
-- URLの末尾にパラメータをくっつけて渡す方法。
+- URLの末尾に[パラメータ](https://github.com/shiory602/tips-and-tricks/tree/WhatIsHTTP/front-end-tips/internet/WhatisHTTP#%E3%83%8F%E3%82%9A%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF)をくっつけて渡す方法。
 - ページの状態をブックマーク出来る
 
 
@@ -150,7 +150,7 @@ Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-eval' 'uns
 
 # HTTPステータスコードとは何ですか？何のために使われますか？
 
-> HTTPステータスコードとは、WebブラウザやクローラーがURLにアクセスしようとした際、Webサーバーから返ってくるレスポンスの種類を示す3桁の数字のこと。
+> HTTPステータスコードとは、Webブラウザや[クローラー](https://github.com/shiory602/tips-and-tricks/tree/WhatIsHTTP/front-end-tips/internet/WhatisHTTP#%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC)がURLにアクセスしようとした際、Webサーバーから返ってくるレスポンスの種類を示す3桁の数字のこと。
 > この3桁の数値を**HTMLを受信する前に**受信することで、ブラウザは正しい処理ができるようになる。
 
 ## HTTPレスポンスのステータス番号
@@ -224,7 +224,7 @@ HTTPリクエストの２行目以降で**お願いごとやお願い元に関�
 - Referer: 遷移元のページ
 - Cookie: ブラウザを特定するための小さなデータ。HTTPヘッダーに含まれてサーバーに送信されている。
 - If-Modified-Since / If-None-Match: ブラウザに保存されているローカルキャッシュが変更されているかどうか。
-- Accept: ブラウザが想定する(利用可能な)MIMEのタイプ
+- Accept: ブラウザが想定する(利用可能な)[MIMEのタイプ](https://github.com/shiory602/tips-and-tricks/tree/WhatIsHTTP/front-end-tips/internet/WhatisHTTP#mime%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%97)
 - Accept-Language: ブラウザが想定する(利用可能な)言語
 - Accept-Encoding: ブラウザがデコードできるエンコーディング形式
 - Accept-Charset: 画像の種類や、言語、文字コード等
