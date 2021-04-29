@@ -6,10 +6,10 @@
 
 ## ドメイン名
 ネットワーク上にあるコンピュータの配置を、ドメインというひとかたまりの管理単位に分ける際に設定される名前のこと。
-- [IPアドレス](./HowDoesTheInternetWork)は人間にとってもわかりにくいので、ホームページや電子メールを利用する際、相手先のコンピュータを特定するために使われる。
+- [IPアドレス](https://github.com/shiory602/tips-and-tricks/tree/main/front-end-tips/internet/HowDoesTheInternetWork#ip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B)は人間にとってもわかりにくいので、ホームページや電子メールを利用する際、相手先のコンピュータを特定するために使われる。
 - “shiori.co.jp.”のように記述される。
 - “www.soumu.co.jp”というドメイン単位に配置されるコンピュータの名前（www）まで含めたドメイン名を、**完全修飾ドメイン名**と呼ぶ。
-- [DNS](./DNSandHowItWorks)によってIPアドレスとドメインが変換される。
+- [DNS](https://github.com/shiory602/tips-and-tricks/tree/main/front-end-tips/internet/DNSandHowItWorks)によってIPアドレスとドメインが変換される。
 
 ### URLにおけるドメイン名
 ```
