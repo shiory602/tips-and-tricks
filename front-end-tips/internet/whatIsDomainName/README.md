@@ -142,12 +142,8 @@ gTLDを増やすことは、gTLDの最終的な管理責任を担うICANNのミ�
 gTLDの多くは通常、 複数のレジストラ経由で空いていれば誰でも登録できるが、 2012年に募集された**新gTLD**では、**ブランドTLD**が認められている。なお、ブランドTLDとして認められるには、 以下の要件を満たす必要がある。
 - 当該文字列が商標登録、法人登記などで保護される対象であること。
 - 当該文字列が一般名称でないこと。
+
 ***実例として、Amazonが申請して取得した .aws (Amazon Web Servicesの略) というTLDが存在する。***
-
-参照：
-[日本ネットワークインフォメーションセンター](https://www.nic.ad.jp/ja/question/domain10.html),
-[新gTLDの基礎知識――社名もトップレベルドメインにできるようになる？](https://webtan.impress.co.jp/e/2012/01/11/11810)
-
 
 ***
 
@@ -155,4 +151,6 @@ gTLDの多くは通常、 複数のレジストラ経由で空いていれば誰
 参照元: 
 [カゴヤのサーバー研究室](https://www.kagoya.jp/howto/webhomepage/01/),
 [DS Magazine](https://ds-b.jp/media/pages/264/),
-[ドメインの取得手順 - DS Magazine](https://www.kagoya.jp/howto/webhomepage/02/)
+[ドメインの取得手順 - DS Magazine](https://www.kagoya.jp/howto/webhomepage/02/),
+[日本ネットワークインフォメーションセンター](https://www.nic.ad.jp/ja/question/domain10.html),
+[新gTLDの基礎知識――社名もトップレベルドメインにできるようになる？](https://webtan.impress.co.jp/e/2012/01/11/11810)
