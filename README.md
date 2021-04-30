@@ -1,4 +1,4 @@
-# tips-and-tricks
+# Front-end Tips
 
 ## Learning Record
 
