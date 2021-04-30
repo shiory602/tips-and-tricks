@@ -3,7 +3,6 @@
 ## Learning Record
 
 1. [Internet](./front-end-tips/1.internet)
-front-end-tips/1.internet#internet
 
 2. [HTML](./front-end-tips/2.HTML)
 
