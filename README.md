@@ -6,7 +6,7 @@
 
 2. [HTML](./front-end-tips/2.HTML)
 
-## IT words index
+# IT words index
 
 - [Symbol-Number](./front-end-tips/ITWordsIndex#symbolnumber)
 
