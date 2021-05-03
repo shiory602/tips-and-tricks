@@ -1,3 +1,3 @@
-# Index
+# D Index
 
-- DTD
+- [DTD](./DTD)
