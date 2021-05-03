@@ -4,4 +4,4 @@
 
 - XMLファイルやSGMLファイルの構造を表現するときに使う
 
--**Document Type Definition**の略
+- **Document Type Definition**の略
