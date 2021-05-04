@@ -128,7 +128,7 @@
 
 
 
-# <form action="..." method="..."> について
+# `<form action="..." method="...">`について
 > htmlでメールフォームを作るには、formタグを使う。
 > formタグには**action属性**と**method属性**の指定が必要。
 
