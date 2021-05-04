@@ -20,3 +20,5 @@
 - [バリデーション](https://github.com/shiory602/tips-and-tricks/tree/FormsAndValidations/front-end-tips/2.HTML/FormsAndValidations#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E6%A4%9C%E8%A8%BC%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
 
 ### Conventions and Best Practices
+
+- [HTMLの様々な Best Practices](./ConventionsAndBestPractices)
