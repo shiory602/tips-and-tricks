@@ -251,11 +251,12 @@ divタグとspanタグに装飾が適用。
 - background-position: 背景画像の位置
 
 ### margin/paddingタグ（間隔を設定する）
-
+- margin: borderを起点として外側のスペース
+- padding: borderを起点として内側のスペース
 
 ### width/heigthタグ（幅や高さの設定）
-- width: 幅を調整するタグ。
-- heigth: 高さを調整するタグ。
+- width: 幅を調整。
+- height: 高さを調整。
 画像の幅を調整したり、背景の高さを調整。
 
 ### borderタグ（枠線の設定）
