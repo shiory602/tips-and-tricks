@@ -8,8 +8,8 @@
 
 # IT words index
 
-- [Symbol-Number](./front-end-tips/ITWordsIndex#symbolnumber)
+- [Symbol-Number](./ITWordsIndex#symbolnumber)
 
-- [IT用語集 索引](./front-end-tips/ITWordsIndex#%E7%B4%A2%E5%BC%95)
+- [IT用語集 索引](./ITWordsIndex#%E7%B4%A2%E5%BC%95)
 
-- [IT words index](./front-end-tips/ITWordsIndex#index)
+- [IT words index](./ITWordsIndex#index)
