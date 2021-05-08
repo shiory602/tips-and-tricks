@@ -6,6 +6,8 @@
 
 2. [HTML](./front-end-tips/2.HTML)
 
+3. [JavaScript](./front-end-tips/3.JavaScript)
+
 # IT words index
 
 - [Symbol-Number](./ITWordsIndex#symbolnumber)
