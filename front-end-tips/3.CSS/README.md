@@ -12,13 +12,13 @@
 
 - [Display](./MakingLayouts#Display)
 
-- [Box Model](./MakingLayouts#BoxModel)
+- [Box Model](./MakingLayouts#box-model)
 
-- [CSS Grid](./MakingLayouts#CSSGrid)
+- [CSS Grid](./MakingLayouts#css-grid)
 
-- [Flex Box](./MakingLayouts#FlexBox)
+- [Flex Box](./MakingLayouts#flex-box)
 
 # Responsive design and Media Queries
 - [レスポンシブデザイン](./ResponsiveDesignAndMediaQueries#ResponsiveDesign)
 
-- [メディアクエリ](./ResponsiveDesignAndMediaQueries#MediaQuery)
+- [メディアクエリ](./ResponsiveDesignAndMediaQueries#media-query)

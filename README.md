@@ -6,7 +6,9 @@
 
 2. [HTML](./front-end-tips/2.HTML)
 
-3. [JavaScript](./front-end-tips/3.JavaScript)
+3. [CSS](./front-end-tips/3.CSS)
+
+3. [JavaScript](./front-end-tips/4.JavaScript)
 
 # IT words index
 
