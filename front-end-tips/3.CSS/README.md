@@ -1,6 +1,8 @@
 # Learn the basics
 - [CSSのシンタックス](./CSSLearnTheBasics/)
 
+- [一般的なCSSのタグ](./CSSLearnTheBasics#一般的なCSSのタグ)
+
 # Making Layouts
 - [レイアウト指定方法](./MakingLayouts)
 
@@ -12,8 +14,11 @@
 
 - [Box Model](./MakingLayouts#BoxModel)
 
-- [CSS Grid](./MakingLayouts#Grid)
+- [CSS Grid](./MakingLayouts#CSSGrid)
 
 - [Flex Box](./MakingLayouts#FlexBox)
 
-- [Responsive design and Media Queries](./MakingLayouts#Floats)
+# Responsive design and Media Queries
+- [レスポンシブデザイン](./ResponsiveDesignAndMediaQueries#ResponsiveDesign)
+
+- [メディアクエリ](./ResponsiveDesignAndMediaQueries#MediaQuery)
