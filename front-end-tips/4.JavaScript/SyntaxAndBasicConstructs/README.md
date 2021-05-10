@@ -1,6 +1,4 @@
-# Syntax and Basic Constructs
-
-## Statement（文）の記法
+# Statement（文）の記法
 
 ## Semicolon
 > 文の末尾には必ずセミコロン`;`をつける。
