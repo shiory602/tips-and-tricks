@@ -1,16 +1,9 @@
 # Syntax and basic constructs
-- [Values]
-- [Literals]
-- [Variables]
-- [Operators]
-- [Expressions]
-- [Keywords]
-- [Comments]
-- [Identifiers]
-- [Case Sensitive]
-- [Camel Case]
-- [Character set]
-[W3schools](https://www.w3schools.com/js/js_syntax.asp)
+- [Statement（文）の記法](./SyntaxAndBasicConstructs#Statement（文）の記法)
+- [Variable](./SyntaxAndBasicConstructs#Variable)
+- [Data Types](./SyntaxAndBasicConstructs#DataTypes)
+- [Operators](./SyntaxAndBasicConstructs#Operators)
+
 
 # Learn DOM manipulation
 - [Adding Elements]
