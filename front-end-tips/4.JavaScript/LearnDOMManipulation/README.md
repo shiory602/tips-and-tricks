@@ -15,7 +15,7 @@
 3. 全てのHTML要素にアクセスしうるためのメソッド
 4. 全てのHTML要素のためのイベント
 
-# DOMツリー
+## DOMツリー
 DOMでは対象となる文書の各要素を抽出し、それらを階層構造として扱う。
 この木構造をDOMツリーと呼ぶ。
 
@@ -142,4 +142,5 @@ DOMContentLoadedイベントリスナ -> コンテンツ本体がロードされ
 
 参照：
 [JavaScript HTML DOM](https://www.w3schools.com/js/js_htmldom.asp),
-[DOMとは何か？【JavaScript初心者向けにわかりやすく説明します！】](https://watablogtravel.com/document-object-model/)
+[DOMとは何か？【JavaScript初心者向けにわかりやすく説明します！】](https://watablogtravel.com/document-object-model/),
+[JAVASCRIPT.INFO](https://ja.javascript.info/modifying-document)
