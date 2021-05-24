@@ -1,0 +1,3 @@
+# M index
+
+- [MAMP](./MAMP)
