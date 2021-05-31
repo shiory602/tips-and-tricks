@@ -414,6 +414,162 @@ Hooksでライフサイクルを使うときで下記のものを含む
 - componentDidUpdate
 - componentWillUnmount
 
+
+***
+
+## react-router
+> react-routerはReactのSPAでルーティング（ページ遷移）を可能にするライブラリ
+> 通常SPAは１ページ内で全て完結するが、react-routerを使うとルーティング先で全く別のコンポーネントを表示することができ、複数のページが存在するようなSPAを作れる。
+
+### インストール
+```
+npm i -D react-router-dom
+```
+インストールした後に使いたいファイルにインポートする
+```js
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+```
+### BrowserRouter
+react-router関連のコンポーネントは全て`<BrowserRouter></BrowserRouter>`の中で使う。
+１プロジェクトにつき１回しか使えないので注意（全て入るように上の階層で使うこと）
+```js
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+
+export default class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        {/* ここにreact-router関連のコンポーネントを全て書く */}
+      </BrowserRouter>
+    );
+  }
+}
+```
+### Route
+`<Route />`にはルーティング先のURLと、そのURLで表示したいコンポーネントを指定
+- path: 転移先のURL
+- component: 表示したいコンポーネント（インポートしておく）
+```js
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+
+class Root extends Component {
+  render() {
+    return <h1>root</h1>;
+  }
+}
+
+class Page1 extends Component {
+  render() {
+    return <h2>Page1</h2>;
+  }
+}
+
+class Page2 extends Component {
+  render() {
+    return <h2>Page2</h2>;
+  }
+}
+export default class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <h1>ルーティング先を選んでください</h1>
+        <Route exact path="/" component={Root} />
+        <Route path="/page1" component={Page1} />
+        <Route path="/page2" component={Page2} />
+      </BrowserRouter>
+    );
+  }
+}
+```
+### exact
+> 完全一致
+react-routerはURLが前方一致したコンポーネントを全て表示する
+上記例で`exact`がなかった場合、`/page1`にアクセスすると`<Root>`コンポーネントと`<Page1>`コンポーネントが表示されてしまう。（`/page1`というURLに`/`も`/page1`も両方前方一致するから）
+これを防ぐために`exact`を入れて完全一致にする
+### Link
+> HTMLの`<a>`と同じような役割
+> `to`でリンク先を指定することでそこへ遷移できる
+- `<Link>`の中に`<a>`は入れられない
+- クラスの指定もできない→中や外に`<div>`などを入れてクラスを付与する
+```js
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+
+export default class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Link to="/">rootへ</Link><br />
+        <Link to="/pageA">pageAへ</Link><br />
+        <Link to="/pageB">pageBへ</Link>
+      </BrowserRouter>
+    );
+  }
+}
+```
+### Switch
+> `<Switch>`は`<Route>`全体を囲んで使う
+1. URLが最初に一致したコンポーネントを１つだけ表示
+react-routerはURLが前方一致したコンポーネントを全て表示してしまうのを防ぐために使う
+複数のコンポーネントが一致しても全部を表示せずに最初にマッチしたコンポーネント１つだけを表示
+2.  URLがどれにも一致しなかった場合に表示するコンポーネントを指定
+際gの`<Route>`だけ`path`を指定しないで使うことで、URLがどの`path`にも一致しなかった場合に表示するコンポーネントを指定できる
+```js
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+
+class Root extends Component {
+  render() {
+    return <h1>rootです</h1>;
+  }
+}
+
+class PageA extends Component {
+  render() {
+    return <h2>PageAです</h2>;
+  }
+}
+
+class PageB extends Component {
+  render() {
+    return <h2>PageBです</h2>;
+  }
+}
+
+class NotFound extends Component {
+  render() {
+    return <h2>404 NOT FOUND</h2>;
+  }
+}
+
+export default class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <h1>ルーティング先を選んでください</h1>
+        <Link to="/">rootへ</Link><br />
+        <Link to="/pageA">pageAへ</Link><br />
+        <Link to="/pageB">pageBへ</Link>
+
+        <Switch>
+          <Route exact path="/" component={Root} />
+          <Route path="/pageA" component={PageA} />
+          <Route path="/pageB" component={PageB} />
+          <Route component={NotFound} />{/* ←pathを指定しない */}
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
+```
+[【React】react-routerの使い方を丁寧に解説](https://dezanari.com/react-react-router/)
+
+
+***
+
 参照：
 [Reactチュートリアル1：犬画像ギャラリーを作ろう](https://zenn.dev/likr/articles/6be53ca64f29aa035f07)
 
