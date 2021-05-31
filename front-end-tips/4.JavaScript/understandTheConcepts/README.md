@@ -100,13 +100,124 @@ function func() {
 # Prototype
 > prototypeに近しい概念は「継承」
 > 継承とは、あるオブジェクトが他のオブジェクトの性質（メソッドやプロパティ等）を引き継ぐ仕組み
-> 簡単に言うと試作品（お試し版）
+> JavaScriptのprototypeには関数が持つ**prototype**と、オブジェクトが持つ内部プロパティ**`[[prototype]]`**がある
+> JavaScriptでは、全てのオブジェクトが「プロトタイプ」をベースに作られており、「プロトタイプ」という最小のオブジェクトをコピーすることで新しいオブジェクトを作る
 ## prototypeの性質
 - prototypeは、オブジェクトの内部プロパティのひとつ。
 - 内部プロパティ`[prototype]`には、何らかのオブジェクト（またはnull）が設定される。
 - 内部プロパティ`[prototype]`は、あるオブジェクトが自身で保有していないプロパティを命令されたとき、自身の代わりにそのプロパティを、内部プロパティ`[prototype]`に設定されたオブジェクトから探索しに行く参照先である。
 - 命令されたプロパティを自身の代わりに内部プロパティ`[prototype]`が保有している場合、オブジェクトはそれを返却する。
+### 関数が持つprototype
+オブジェクトで直接参照が可能：
+```js
+console.log(Object.prototype);
+```
+### オブジェクトが持つ[[Prototype]]
+インスタンスの生成時、新たに生成されたオブジェクトにはコンストラクタ関数のprototypeの参照を持った内部プロパティ`[[Prototype]]`が生成される
+```js
+const newObj = new Object();
+// newObj.[[Prototype]] = Object.prototype;
+```
+この`[[prototype]]`は参照することはできないが、`Object.getPrototypeOf()`や`__proto__`プロパティ（非推奨）をしようして参照することはできる
+```js
+const newObj = new Object();
+console.log(Object.getPrototypeOf(newObj) === Object.prototype); //true
+console.log(newObj.__proto__ === Object.prototype); // true
+```
+## prototypeの使い方
+- prototypeを使ってメソッドを追加
+構文
+```js
+クラス名.prototype.メソッド名 = function(仮引数1, 仮引数2, ...) {
+    // 処理
+    return;
+}
+```
+例
+```js
+var Person = function(name, age) {
+    this.name = name;
+    this.age = age;
+};
 
+// クラスPersonのプロパティにgreetメソッドを追加する
+Person.prototype.greet = function () {
+    return "I'm" + this.name + ".years old";
+};
+
+// オブジェクトに対してプロトタイプのメソッドを呼び出せる
+function myFunction() {
+    var person1 = new Person('Mark', 25);
+    console.log(person1.greet()); // I'm Mark. I'm 25 years old.
+}
+```
+- prototypeによる敬称
+例
+```js
+var Person = function(name, age) {
+    this.name = name;
+    this.age = age;
+};
+
+Person.prototype.greet = function() {
+    return "I'm" + this.name + ". I'm" + this.age + "years old.";
+};
+
+function myFunction() {
+    var person1 = new Person('Mark', 25);
+    var person2 = new Person('Tom', 31);
+
+    console.log(person1.greet()); // I'm Mark. I'm 25 years old.
+    console.log(person2.greet()); // I'm Tom. I'm 31 years old.
+}
+```
+敬称してデータを節約できるこの仕組みをプロトタイプチェーンという
+
+
+## プロトタイプチェーン
+> オブジェクトのプロパティを参照しようとした時に、そのプロパティがなければ`オブジェクト.__proto__`にプロパティを探しに行く仕組み。
+> さらに`オブジェクト.__proto__`にもプロパティがなければ`オブジェクト.__proto__.__proto__`にというように`null`になるまで探しに行く。
+### プロトタイプチェーンの例
+```js
+const newObj = {
+    name: '新しいオブジェクト'
+};
+console.log(newObj.toString()); // [object Object]
+```
+1. newObj に toString() メソッドが無いか探す。
+2. 見つからなかったので newObj.__proto__ つまり Object.prototype に toString() メソッドが無いか探す。
+3. 見つかった為呼び出す。(newObj.__proto__.toString())
+> 結果　[object Object]
+
+### 見つからない場合の例
+```js
+const newObj = {name: '新しいオブジェクト'};
+console.log(newObj.toArray()); // newObj.toArrayis not a function
+```
+1. newObj に toArray() メソッドが無いか探す。
+2. 見つからなかったので newObj.__proto__ に toArray() メソッドを探す。
+3. 見つからなかったので newObj.__proto__.__proto__ に…
+4. newObj.__proto__.__proto__ は null なので終了。
+> 結果　newObj.toArrayis not a function
+
+### prototypeの拡張
+toArrayメソッドを用意することで以下のように実行可能
+```js
+Object.prototype.toArray = function() {
+  return Object.values(this);
+}
+const newObj = {name: '新しいオブジェクト'};
+console.log(newObj.toArray()); // ["新しいオブジェクト"]
+```
+
+
+## `__proto__`のメリット
+JavaScriptはオブジェクトのインスタンスは全てコピーとなる
+コンストラクタに直接メソッドを追加すると、生成したインスタンスの数だけメソッドが作成され、メモリの消費が大きくなる
+プロトタイプをしようすれば、暗黙的な参照が持てるのでこの問題を解決することができる
+※ES2015からはclass構文が用意されているのでprototypeを使わずに敬称が行える
+
+[【初心者向け】JavaScript prototypeの使い方と継承](https://webukatu.com/wordpress/blog/13503/)
 [JavaScriptのprototypeを理解する](https://techplay.jp/column/618),
 [JavaScript「prototype」とは？](https://tatsuno-system.co.jp/2020/03/16/blog_java-script/)
 ***
