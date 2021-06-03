@@ -29,7 +29,16 @@ Angular
 ### 差分描画
 Reactを使うことで仮想DOMで差分のみを描画する
 実際のDOMには関連する箇所だけが再描画される
-
+### Reactコンポーネントが再描画を行うタイミング
+- stateが変更された時
+- propsが変更された時
+## stateとpropsの違い
+- state: コンポーネントの内部で宣言・制御される値
+- props: 引数のように親から子（コンポーネント）に渡される値
+### stateを使う理由
+- Reactコンポーネント内の値を書き換えたい時
+コンポーネント内の要素をDOMで直接書き換えてはいけない
+新しい値を使って再描画（再レンダリング）させるのが正解
 
 
 ## Reactの使い方
@@ -297,25 +306,17 @@ return (
 It is an object with data that is passed between components
 全てのデータタイプを持つ
 Reactは一方通行で親から子にデータがいく
+### propsの渡し方
+- OKな関数の渡し方
 ```js
-// child comp
-function Welcome(props) {
-    return <h1>Hello, {props.name}.</h1>
-}
-// parent comp
-function App() {
-    return (
-        <div>
-            <Welcome name="Sara" />
-            <Welcome name="Alice" />
-            <Welcome name="Eddy" />
-        </div>
-    );
-}
-// <h1>Hello, Sara.</h1>
-// <h1>Hello, Alice.</h1>
-// <h1>Hello, Eddy.</h1>
+<Button isPublished={isPublished} onClick={publishArticle} /> //関数自体をpropsとして渡す
+<Button isPublished={isPublished} onClick={()=> publishArticle()} /> // callback関数として関数を渡す
 ```
+- NGな関数の渡し方(無限レンダリングが起きる)
+```js
+<Button isPublished={isPublished} onClick={publishArticle()} /> // 関数を渡すときに実行されてレンダリングが起きる 
+```
+
 ## Props in functional component
 String以外では常に`{}`が必要
 ```js
