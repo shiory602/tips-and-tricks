@@ -1,4 +1,50 @@
 # Statement（文）の記法
+> プログラミング言語の構文の要素は、式と文に分類される
+## ExpressionとStatementの違い
+- Expression(式): 値を生成して、変数にその値の評価値を代入できるもの
+```js
+// 1という式の評価値を表示
+console.log(1);
+// 式の評価値を変数に代入
+const total = 1 + 1;
+// 関数式の評価値（関数オブジェクト）を変数に代入
+const fn = function() {
+  return 1;
+};
+// fn()という式の評価値を表示
+console.log(fn()); // 1
+```
+- Statement(文): 処理をする１つ１つのステップ(if文やfor文など)
+  - 文の行末に`;`を書くことで文と文を区別する
+  - 文は変数に代入できない
+  - 文を`{}`で囲ったものをブロック文という
+```js
+// if文とブロック文の組み合わせ
+if (true) {
+  console.log("hi");
+}
+
+// ブロックで終わらない文なので、セミコロンが必要
+if (true) console.log(true);
+// ブロックで終わる文なので、セミコロンが不要
+if (true) {
+    console.log(true);
+}
+```
+### function文とfunction式
+「ブロックで終わる文」には；は不要
+```js
+// learn関数を宣言する関数宣言文
+function learn() {
+}
+// 関数式をread変数へ代入
+const read = function() {
+};
+```
+上記式では、functionという匿名関数は「式」であり、ここで行われている処理は**readという変数を宣言する文の一部**である。あくまで全体としては**式**なので文末には`;`をつける必要がある。
+
+[式と文の違いまとめ](https://tomyyyyo.hatenablog.com/entry/2020/05/21/5-20_%E5%BC%8F%E3%81%A8%E6%96%87%E3%81%AE%E9%81%95%E3%81%84%E3%81%BE%E3%81%A8%E3%82%81)
+***
 
 ## Semicolon
 > 文の末尾には必ずセミコロン`;`をつける。
