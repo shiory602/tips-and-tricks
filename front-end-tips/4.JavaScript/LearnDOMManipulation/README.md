@@ -46,13 +46,36 @@ DOMはノードを抽出・追加・置換・削除するための汎用的な�
 ### 要素を変更する
 | プロパティ | 概要 |
 | --- | --- |
-| `element.innerHTML =  new html content` | HTML要素の中身を変更する |
+| `element.innerHTML =  new html content` | HTML要素の中身を変更する(非推奨)*1 |
+| `element.textContent = value` | HTML要素の中身を変更する（HTMLコードも全てテキストとして表示） |
 | `element.attribute = new value` | HTML要素の中の属性を変更する |
 | `element.style.property = new style` | HTML要素のCSSスタイルを変更する |
 | メソッド | 概要 |
 | --- | --- |
 | element.setAttribute("attribute", value) | HTML要素の属性値を変更する |
 
+| `element.insertAdjacentText(position, text)` | テキストを、メソッドを実行した要素に対する相対的な位置*2に挿入 |
+| `insertAdjacentElement` | HTML要素(element)を、メソッドを実行した要素に対する相対的な位置*1に挿入 |
+*1 `innerHTML`の使用は、[クロスサイト・スクリプティング(XSS)攻撃](https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0)を許す恐れがあるので`innerHTML`は使わずに他の方法を推奨。`document.write()`も同じ。
+```js
+// 脆弱な例
+var div = document.getElementById( "msg" );
+var url = "http://example.jp/" + some_page;   // some_page は外部からコントロール可能な文字列
+div.innerHTML = '<a href="' + url + '">' + url + "</a>";
+
+// 安全な例
+var div = document.getElementById( "msg" );
+var url = "http://example.jp/" + some_page;   // some_page は外部からコントロール可能な文字列
+var elm = document.createElement( "a" );
+elm.setAttribute( "href", url );
+elm.appendChild( document.createTextNode( url ) );
+div.appendChild( elm );
+```
+*2 相対的な位置
+`beforebegin`: element 本体の前。
+`afterbegin`: element のすぐ内側の、最初の子要素の前。
+`beforeend`: element のすぐ内側の、最後の子要素の後。
+`afterend`:element 本体の後。
 ### 要素を追加・削除する
 | メソッド | 概要 |
 | --- | --- |
