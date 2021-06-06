@@ -43,7 +43,7 @@ const read = function() {
 ```
 上記式では、functionという匿名関数は「式」であり、ここで行われている処理は**readという変数を宣言する文の一部**である。あくまで全体としては**式**なので文末には`;`をつける必要がある。
 
-[式と文の違いまとめ](https://tomyyyyo.hatenablog.com/entry/2020/05/21/5-20_%E5%BC%8F%E3%81%A8%E6%96%87%E3%81%AE%E9%81%95%E3%81%84%E3%81%BE%E3%81%A8%E3%82%81)
+[JavaScript Primer](https://jsprimer.net/basic/statement-expression/)
 ***
 
 ## Semicolon
