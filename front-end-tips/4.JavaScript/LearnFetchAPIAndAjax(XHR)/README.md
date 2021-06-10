@@ -8,26 +8,36 @@
 2. 通信が成功した時と失敗した時のコールバック関数の設定
 ```js
 // Fetch APIの実行
-fetch('api.json', {
-  headers: {
-    'Content-Type': 'pplication/json; charset=utf-8'
-  },
-  body: JSON.stringify({"hoge": "fuga"})
-})
- 
-  // 通信が成功したとき
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(json) {
-    console.log(json);
-  })
- 
-  // 通信が失敗したとき
-  .catch(function(error) {
-    console.error('Error:', error);
+// fetch で GET の HTTPリクエストを行う -> fetchメソッド は Promiseインスタンス を返す
+const userId = "任意のGitHubユーザーID";
+
+function fetchUserInfo(userId) {
+  fetch(`https://api.github.com/users/${encodeURIComponent(userId)}`)
+    // 通信が成功したとき
+    // Promiseインスタンス は Responseオブジェクト で resolve され、 thenコールバック が呼び出される
+    .then(response => {
+        // Responseオブジェクト の statusプロパティ からは HTTPレスポンス のステータスコードが取得できる
+        console.log(response.status); // => 200
+        // エラーレスポンスが返されたことを検知する
+        if (!response.ok) {
+          console.error("エラーレスポンス", response);
+        } else {
+          // Responseオブジェクト の jsonメソッドも Promise を返す
+          // HTTPレスポンスボディ を JSON としてパースしたオブジェクトでresolveされる
+          return response.json().then(userInfo => {
+              // JSONパース*1されたオブジェクトが渡される
+              console.log(userInfo); // => {...}
+          });
+        }
+    // 通信が失敗したとき
+    // エラーハンドリングを thenメソッド の第二引数か catchメソッド のコールバック関数 で行う
+    }).catch(error => {
+        console.error(error);
   });
-  ```
+}
+```
+*1: 自分の環境で扱えるように解析、変換することをparseという
+JSONファイルはそのまま読み込めばただの**文字列**だが、これらをJavaScriptのオブジェクトとして扱いたい。つまりJSONとして扱いたい場合、適切にパースすることによって、JSONとして扱うことができる。
 
 ## Promise
 JavaScriptでは多くの処理が非同期のため、処理が終わったことを知らせるためにコールバックが有効。
@@ -96,5 +106,7 @@ Extensible Markup Languageの略。
 
 
 ***
-参照：[初心者目線でAjaxの説明](https://qiita.com/hisamura333/items/e3ea6ae549eb09b7efb9),
+参照：
+[【JavaScript基礎】Fetch APIの基礎](https://kde.hateblo.jp/entry/2018/10/22/010811),
+[初心者目線でAjaxの説明](https://qiita.com/hisamura333/items/e3ea6ae549eb09b7efb9),
 [JAVASCRIPT.INFO](https://ja.javascript.info/network)
