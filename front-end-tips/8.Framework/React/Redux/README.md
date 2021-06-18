@@ -1,12 +1,221 @@
 # Redux
 > Reduxとは、React.jsで使用するstateつまりアプリケーションの状態を管理するフレームワーク
-> 状態管理するためのフレームワークで、例えば
-> ページングがある一覧に対して、現在のページ数を保持したり、「次へ」を押して読み込んでる最中は読み込んでいるという状態を管理する。
-> チェックボタンが3つあって、3つチェックされたら送信ボタンが ON になるための状態を管理するなど。
-- アプリケーションの全ての状態はストアで一元管理
-- ビュー(React本体)はstateとaction creatorを受け取り、stateにしたがって描画するだけ
-- 描画を変えたいときはビューがactionを発動してstateを更新する。（その結果、描画が更新される）
-### ビュー
+
+## なぜ Redux を使うのか
+1. state の見通しをよくするため
+2. どこからでも state を参照/変更可能にするため
+3. モジュール（機能の塊）を疎結合にするため = 機能Aと機能Bが互いに影響し合わない状態にする
+
+## Fluxフローとは
+1. データフロー設計の１つ
+2. データが常に一方向に流れる
+3. イベントによってデータが変化（イベント駆動）
+Flux思想をReactの状態管理に適用したライブラリ＝Redux
+
+### Flux フローの流れ（例）
+1. ユーザーがウェブサイトにアクセスするとURLに応じた（コンポーネントが入っている）containerが表示される
+2. 購入のcomponentをクリックすることでイベントが発生する -> Action が実行される（状態の変更）
+3. Action が要求を受けて Reducer に変更の内容を伝える
+4. Reducer が変更の内容を受け付けて Store でどのように状態の保存を書き換えるかを伝える
+5. Store の中で状態が書き換わる
+6. 書き換わった Store が `mapStateToProps/mapDispatchToProps` を通して container に伝わる
+7. container の中で書き換わったデータが表示される
+
+## Actionとは
+> 要求を受けて変更を依頼
+### 役割
+アプリからStoreへデータを送るためのpayloadを渡す役割
+- payload: データの塊（この状態をこう変更してね）
+Reducer（変更の管理人）にtype(どんな変更の種類)とpayload(どんなデータの種類)を返す
+### 使い方
+1. Action type を定義して export -> reducer で以来の種類を import
+2. type と payload を記述する
+3. Actions は常に**プレーン**な object を返す(処理しない)
+```js
+//　1.Action type を定義して export -> reducer で import
+export const SIGN_IN = "SIGN_IN";
+
+export const signInAction = (userState) => {
+    // 3.プレーンな object を返す
+    return {
+        // 2.type と payload を記述する
+        type: "SIGN_IN",
+        payload: {
+            isSignedIn: true, // signIn しているか
+            uid: userState.uid, // userId
+            username: userState.username
+        }
+    }
+};
+// 
+export const SIGN_OUT = "SIGN_OUT";
+// sign out は特にデータはないので引数はなし
+export const signOutAction = () => {
+    return {
+        type: "SIGN_OUT",
+        payload: {
+            isSignedIn: false,
+            uid: "",
+            username: ""
+        }
+    }
+};
+```
+
+## Reducers
+> 変更を管理する状態(Store内のstate)の管理人
+### 役割
+Actionsからデータを受け取りStoreのstateをどう変更するのか決める
+Store の状態を上書きするので指定されてない field はなくなる
+**initialState**
+- Store の初期状態
+- アプリに必要な state をすべて記述
+- export しておく
+```js
+const initialState = {
+    users: {
+        isSignedIn: false,
+        uid: "",
+        username: ""
+    }
+};
+export default initialState
+```
+### 使い方
+1. action ファイル内のモジュールを全て import (Action という名前をつける)
+2. initialState を import
+3. 現在の store の状態か初期状態を指定した state と action から返された値を引数にして関数を作る
+4. action のタイプに応じてどの状態をどう変更するかをかく
+5. 現在の store の状態を展開した後に action.payload をマージする
+```js
+import * as Actions from './actions'
+import initialState from '../store/initialState'
+
+// 第一引数に state(現在の store の状態が指定されてないときのために initialState をつける)
+// 第二引数に action が return した値（プレーンなオブジェクトを受け取る）
+export const UsersReducer = (state = initialState.users, action) => {
+    // Actions の type に応じて state をどう変更するのか決める
+    switch (action.type) {
+        case Actions.SIGN_IN:
+        return {
+            // 現在存在している field を展開
+            ...state,
+                // isSignedIn: false,
+                // uid: "",
+                // username: ""
+
+            // すでにある state を新しく書き換える
+            ...action.payload
+                // isSignedIn: action.payload.isSignedIn,
+                // uid: action.payload.uid,
+                // username: action.payload.username
+        }
+        default:
+        return state
+    }
+}
+```
+**スプレッド構文**: 配列やオブジェクトの要素を展開する
+```js
+const payload = {
+    uid: "0000",
+    username: "shiori"
+}
+console.log({...payload})
+// { uid: "0000", username: "shiori" }
+console.log(...payload)
+// uid: "0000", username: "shiori"
+
+// Merge Objects
+const state = { isSignedIn: false }
+console.log({...state, ...payload})
+```
+
+## Storeとの接続
+> state を管理する
+1. Store と Reducers を関連づける
+```js
+import {
+    createStore as reduxCreateStore,
+    combineReducers,
+} from 'redux';
+
+// Import reducers
+import {ProductsReducer} from '../products/reducers';
+import {UsesReducer} from '../users/reducers';
+
+export default function createStore() {
+    return reduxCreateStore( // redux の createStore メソッドの別名
+        combineReducers({ // Reducers をまとめたもの
+            products: ProductsReducer,
+            users: UsersReducer,
+        })
+    );
+}
+```
+### `combineReducers()`とは
+分割した Reducers を state のカテゴリ毎にまとめる
+オブジェクトを return する (state のデータ構造)
+```js
+combineReducers({
+    products: ProductsReducer,
+    users: UsersReducer,
+})
+
+{
+    products: {
+        //products の state
+    },
+    users: {
+        isSignedIn: false,
+        uid: "",
+        username: ""
+    }
+}
+```
+
+2. Redux(store) と Reactアプリ を接続する
+index.js
+```js
+import { Provider } from 'react-redux';
+import createStore from './redux/store/store';
+
+export const store = createStore();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+)
+```
+### react-redux の Provider とは
+props に store を渡す
+React コンポーネント内で react-redux の connect 関数を使えるようにする
+-> React と Redux を接続して App の中で store を変更・参照できるように
+
+3. Store の状態を変更する
+App() の中で
+```js
+const dispatch = useDispatch();
+const selector = useSelector(selector: (state) => state);
+
+console.log(selector.users);
+// initialStateで定義したオブジェクトがconsoleされる
+
+// dispatch を使って state を変更する
+<button onClick={() => dispatch(signInAction( {uid: '0001', username: 'shiori'}))}>
+    Sign In
+</button>
+```
+
+
+
+
+
+
+***
+
+### View
 ビューにはコンテナとコンポーネントの二種類がある
 コンテナがReact外部とのインターフェース
 - コンテナ（器）
@@ -57,7 +266,7 @@ const store = {
 ```
 
 ### Action / Action Creator
-- Action: typeをキーとして、stateを更新するための定義を書くで、更新するときはdispatch関数を実行することで状態更新する
+- Action: typeをキーとして、stateを更新するための定義を書いで、更新するときはdispatch関数を実行することで状態更新する
 ```js
 const action = {
     type : 'ADD_COUNT'
