@@ -208,8 +208,99 @@ console.log(selector.users);
 </button>
 ```
 
+## Routing middlewareの導入
+1. react-router
+React のルーティング用ライブラリ
+2. connected-react-router
+Redux の Store でルーティングを管理
+store.js
+```js
+import {
+    createStore as reduxCreateStore,
+    combineReducers,
+    applyMiddleware
+} from 'redux';
+import {connectRouter, routerMiddleware} from 'connected-react-router';
 
+// 引数に ブラウザが以前どこにいたか・今どこにいるかの値を持つ history を渡す
+export default function createStore(history) {
+    return reduxCreateStore(
+        combineReducers({
+            // history の持つ情報を redux の store の router で管理
+            router: connectRouter(history),
+            users: UsersReducer,
+        }),
+        // 宣言をする
+        applyMiddleware(
+            routerMiddleware(history)
+        )
+    );
+}
+```
+index.js
+```js
+import {ConnectedRouter} from 'connected-react-router';
+import * as History from 'history';
 
+const history = History.createBrowserHistory();
+export const store = createStore(history);
+
+ReactDOM.render(
+    // store情報の変更
+    // ブラウザURLの遷移の履歴
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
+            <App />
+        </ConnectedRouter>
+    </Provider>,
+    document.getElementById('root'),
+)
+serviceWorker.unregister();
+```
+src/Router.jsx
+```js
+import {Route, Switch} from 'react-router';
+import {Login, Home} from 'templates';
+
+const Router = () => {
+    return (
+        <Switch>
+            <Route exact path="/login" component={Logtin} />
+            <Route path="/posts/:id" component={Logtin} />
+            <Route exact path="(/)?" component={Home} />
+        </Switch>
+    )
+}
+export default Router;
+```
+- `(/)?`とすることで、スラッシュがあってもなくてもよくなる
+- `:id`とすることでプログなどの記事を指定して動的に表示することもできる（この場合、`exact`はいらない
+```js
+<Route path="/posts/:id" component={Logtin} />
+```
+### templates ファイルの作成
+template: URL ごとに作るファイル
+src/templates/Login.jsx
+```js
+import {useDispatch} from 'react-redux';
+// push は URL を遷移する役割を持つ
+import {push} from 'connected-react-router';
+
+const Login = () => {
+    const dispatch = useDispatch();
+    // 現在のストアの情報をゲット
+    const selector = useSelector(state => state)
+
+    return (
+        <div>
+            <h2>ログイン</h2>
+            <button onClick={() => dispatch(push('/'))}>
+                ログイン
+            </button>
+        </div>
+    )
+}
+```
 
 
 
