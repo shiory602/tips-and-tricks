@@ -1,14 +1,6 @@
 # Front-end Tips
 
-## Learning Record
-
-1. [Internet](./front-end-tips/1.internet)
-
-2. [HTML](./front-end-tips/2.HTML)
-
-3. [CSS](./front-end-tips/3.CSS)
-
-3. [JavaScript](./front-end-tips/4.JavaScript)
+[Learning Record](./front-end-tips)
 
 # IT words index
 
