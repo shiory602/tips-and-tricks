@@ -36,20 +36,20 @@ By using GitHub, anyone can store and publish source code and other data for fre
 It is also possible to create a private repository that only any person can access.
 
 ## Basic Git terminology
-| Terminology | Meaning
-| --- | --- | Repository
-| Repository | A place to store and manage source files and other data.
-| remote repository | a repository shared with team members on a server
-| Local repository | A repository managed by each team member by copying the master repository.
-| Clone | Copy (duplicate) a repository
-| Fork | Clone another developer's repository on GitHub.
-| Init | Create a new repository.
-| pull | pull data from a master repository into a local repository
-| Push | Add changes from the local repository to the master repository.
-| commit | Record work on a file or directory in the local repository.
-| worktree | directory in which the user is working
-| merge | merge changes from different repositories
-| conflicts | errors that cause changes to occur in the same place in the same file at the same time
+| Terminology | Meaning |
+| --- | --- | Repository |
+| Repository | A place to store and manage source files and other data. |
+| remote repository | a repository shared with team members on a server |
+| Local repository | A repository managed by each team member by copying the master repository. |
+| Clone | Copy (duplicate) a repository |
+| Fork | Clone another developer's repository on GitHub. |
+| Init | Create a new repository. |
+| pull | pull data from a master repository into a local repository |
+| Push | Add changes from the local repository to the master repository. |
+| commit | Record work on a file or directory in the local repository. |
+| worktree | directory in which the user is working |
+| merge | merge changes from different repositories |
+| conflicts | errors that cause changes to occur in the same place in the same file at the same time |
 
 ### branch
 > The ability to create a branch repository by copying the master repository.
