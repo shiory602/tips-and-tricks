@@ -37,7 +37,7 @@ It is also possible to create a private repository that only any person can acce
 
 ## Basic Git terminology
 | Terminology | Meaning |
-| --- | --- | Repository |
+| --- | --- |
 | Repository | A place to store and manage source files and other data. |
 | remote repository | a repository shared with team members on a server |
 | Local repository | A repository managed by each team member by copying the master repository. |
