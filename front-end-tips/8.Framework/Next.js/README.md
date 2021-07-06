@@ -1,4 +1,4 @@
-# Next.js
+# Next.js -React.jsのフレームワーク-
 SEOに強いSPA開発ができる
 パフォーマンスを効率化する
 ルーティング（`react-router`の使用）が楽
@@ -37,3 +37,21 @@ TypeScriptを簡単に導入できる
 Next.jsの恩恵を最大限受けられる
 Firebaseと比べてもVercelの方がいい
 理由：表示速度・デプロイにかかる時間・環境構築
+
+
+
+# 環境構築
+- Babel + Webpackの複雑な環境設定が不要
+- Code Splittingのような最適化設定が不要
+- パフォーマンスやSEOのためのPre-render設定が不要
+- Renderingのタイミングを選択できる
+- サーバーサイドの処理を簡単に実装できる
+
+ターミナルでNext.jsファイルを作りたい場所に移動して下記コードを入力する
+```
+npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter"
+```
+
+***
+
+[公式サイト](https://nextjs.org/)
