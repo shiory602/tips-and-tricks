@@ -20,7 +20,7 @@ function func() {
     var myName;
 
     console.log(myName); //undefined
-    var myName = 'local';
+    myName = 'local';
     console.log(myName); //local
 }
 ```
