@@ -1,5 +1,5 @@
 # Cookie（クッキー）
-関連：[セッション](../../せ/セッション), [HTTP](front-end-tips/1.internet/WhatisHTTP)
+関連：[セッション](../../せ/セッション), [HTTP](../../../front-end-tips/1.internet/WhatisHTTP)
 
 ### 私の認識
 > ウェブサーバーにアクセスしたときにやった内容覚えておくウェブブラウザ側の記憶機能。
