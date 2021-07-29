@@ -1,5 +1,5 @@
 # Cookies
-Related: [Session](../../session), [HTTP](../../../front-end-tips/1.internet/WhatisHTTP)
+Related: [Session](../../S/session), [HTTP](../../../front-end-tips/1.internet/WhatisHTTP)
 
 ### My understanding.
 > A memory function on the web browser side that remembers what you've done when you access the web server.
