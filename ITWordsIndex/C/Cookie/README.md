@@ -12,7 +12,7 @@ When a web browser receives a cookie from a web server, it sends the received co
 > The state of the client side (Wev browser) is maintained based on the cookie information.
 ## Problems with cookies
 Cookies are not secure because they can be easily looked into by using certain tools!
-Therefore, a way to keep more information more securely was devised: "[Session](...)". /... /session)" mechanism.
+Therefore, a way to keep more information more securely was devised: "[Session](../../S/Session)" mechanism.
 
 ## Difference between Cookie and Session
 | Features | Session | Cookie |
