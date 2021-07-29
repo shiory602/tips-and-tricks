@@ -1,5 +1,5 @@
 # Session
-Related: [cookies](../../C/Cookies)
+Related: [cookie](../../C/Cookie)
 
 ## How a session works
 1. a user accesses the web server using a web browser.
