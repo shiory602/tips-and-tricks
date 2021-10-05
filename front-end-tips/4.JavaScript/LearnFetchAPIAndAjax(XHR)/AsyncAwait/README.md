@@ -1,3 +1,104 @@
+> Simply put, async is a replacement for Promise, and await is a replacement for then
+
+# async
+### You can define an "async function" by adding async to an arrow function or function.
+- The function itself is executed asynchronously (it only starts executing, it doesn't know when it will finish).
+- Return Promise
+`value = await promise;` is equivalent to `promise.then(value => {});`.
+`return` is treated as `resolve()` (same as return in "what's in then")
+`throw` for exceptions, etc. is treated as `reject()`.
+
+# await
+When `await` is attached to Promise, it waits for Promise to `resolve()` and gets the value.
+(Actually, it does what `then()` does.)
+
+Since async actually does the same thing as Promise, an async function that does not include an await (see below) will be as meaningless as Promise that does not do asynchronous processing. In that case, it will behave just like a normal function without async.
+```js
+const asyncFunction = async () => {
+  const promise = new Promise(resolve => {
+      setTimeout(resolve, 1000, 'foo'); // resolve('foo') will be called inside
+  });
+
+  const value = await promise; // wait 1 second
+
+  console.log(value);
+};
+
+asyncFunction();
+```
+(Await can only be used inside an async function.
+If you want to use await outside the async function, use the async immediate function.
+```js
+(async () => {
+    // ... (code using await)
+})();
+```
+
+> "await in async function definition, async function call or promise behind it"
+
+
+# Rewrite .then to async/await
+Processing with `.then`.
+Return `foo` as a result of Promise(resolve) after 1 second
+```js
+const getQuote = () => new Promise(resolve => {
+  setTimeout(resolve, 1000, 'foo')
+});
+
+getQuote().then((quote) => {
+  console.log(quote)
+}).catch((error) => {
+  console.log(error)
+})
+```
+
+Rewrite to `async/await
+```js
+const getQuote = () => new Promise(resolve -> {
+  setTimeout(resolve(quote), 1000)
+})
+
+async function mainFunction() { // Wrap the whole program in an async function.
+  var quote = await getQuote("foo") // Call the function before then with the await prefix.
+  .catch((error) => {
+    console.log(error)
+  }) 
+  console.log(quote)
+}
+
+mainFunction()
+```
+
+## error handling using try/catch
+```js
+const getQuote = (quote) =>
+new Promise((resolve) => {
+  setTimeout(resolve(quote), 1000);
+});
+
+const mainFunction = async () => {
+  try {
+    const quote = await getQuote('foo')
+    console.log(quote)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+mainFunction()
+```
+
+
+Reference: [What Promise async/await do](https://qiita.com/kerupani129/items/2619316d6ba0ccd7be6a)
+
+
+
+
+
+***
+
+
+
 > 簡単に言うと、async が Promise の代わりで、await が then の代わり
 
 # async
