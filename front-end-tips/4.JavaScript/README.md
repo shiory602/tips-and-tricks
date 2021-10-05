@@ -40,7 +40,7 @@
 
 - [XMLHttpRequest](./LearnFetchAPIAndAjax(XHR)#xmlhttprequest)
 
-- [How to use API](./HowToUseAPI)
+- [How to use API](./LearnFetchAPIAndAjax(XHR)/HowToUseAPI)
 
 # ES6+ and modular JavaScript
 JavaScript と EcmaScript
