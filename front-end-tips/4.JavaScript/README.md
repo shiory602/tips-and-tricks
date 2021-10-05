@@ -40,6 +40,8 @@
 
 - [XMLHttpRequest](./LearnFetchAPIAndAjax(XHR)#xmlhttprequest)
 
+- [How to use API](./HowToUseAPI)
+
 # ES6+ and modular JavaScript
 JavaScript と EcmaScript
 ES2015（ES6）での大きな仕様変更
