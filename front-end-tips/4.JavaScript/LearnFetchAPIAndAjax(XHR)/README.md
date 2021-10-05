@@ -1,3 +1,122 @@
+> In JavaScript, Promise is something that returns a result when an asynchronous processing operation is completed. Asynchronous processing means that you do not wait for one process to finish after it is executed, but perform another process that is coming next.(日本訳：PromiseとはJavaScriptにおいて、非同期処理の操作が完了したときに結果を返すものです。 非同期処理とは、ある処理が実行されてから終わるまで待たずに、次に控えている別の処理を行うことです。)
+
+# Fetch API
+> Features designed based on Promise (asynchronous processing) introduced in ES2015 and later.
+*Asynchronous processing* here does not mean *no page transition* as in Ajax.
+> Send a request to the server and load new information whenever necessary
+> This is done without reloading the page.
+
+1. execution of the API
+2. set up callback functions for successful and unsuccessful communication
+
+```js
+// Execute the Fetch API
+// Make a GET HTTP request with fetch -> fetch method returns a Promise instance
+const userId = "any GitHub user ID";
+
+function fetchUserInfo(userId) {
+  fetch(`https://api.github.com/users/${encodeURIComponent(userId)}`)
+    // When the communication is successful
+    // the Promise instance is resolved in the Response object, and then the callback is invoked
+    .then(response => {
+        // The HTTP response status code can be obtained from the status property of the Response object
+        console.log(response.status); // => 200
+        // detect that an error response has been returned
+        if (!response.ok) {
+          console.error("Error response", response);
+        } else {
+          // Response object's json method also returns a Promise
+          // the HTTP response body is parsed as JSON and resolved as an object
+          return response.json().then(userInfo => {
+              // JSON parsed*1 object is passed
+              console.log(userInfo); // => {...}
+          });
+        }
+    // When the communication fails
+    // Error handling is done by the second argument of then method or the callback function of catch method
+    }).catch(error => {
+        console.error(error);
+  });
+}
+```
+*1: Parsing and transforming a JSON file so that it can be handled in your environment is called parse.
+JSON files are just **character strings** when read as is, but we want to treat them as JavaScript objects. In other words, if you want to handle them as JSON, you can handle them as JSON by properly parsing them.
+
+## Promise
+In JavaScript, many processes are asynchronous, so callbacks are effective for letting you know when a process has finished.
+However, if you use too many callbacks, you will end up with a hell of nested callbacks.
+To solve this problem, **Promise** is used.
+
+## Promise chain
+In Promise, methods are called one after another with `.` Promise uses a mechanism called "method chaining", which connects methods one after another with.
+In Promise, `.then(res => {...})` This is called a "Promise chain".
+
+
+***
+
+# Ajax(XHR)
+"AJAX" (Asynchronous Javascript And Xml) = XMLHttpRequest
+Ajax is a method of using JavaScript to communicate with the server side in an **asynchronous** manner, and dynamically rewriting parts of the page depending on the result of the communication**.
+In addition to JavaScript, it can be achieved by combining existing functions** such as XML, XMLHttpRequest, and DOM.
+
+### XMLHttpRequest
+> An API that provides client-side functions for transmitting data between client and server.
+> It provides an easy way to load data from a URL without reloading the entire page.
+> This API allows you to update a portion of a web page without interrupting the user's work.
+> (From MDN)
+
+### JavaScript
+XMLHttpRequest is a javascript built-in object and is pre-defined.
+This means that asynchronous communication can only be implemented using javascript.
+
+### DOM.
+> The Document Object Model (DOM) is an API for HTML and XML documents. It provides a structural representation of a document, allowing changes to its content and display format. In short, it is a mechanism that connects web pages to scripts and programming languages.
+> (from MDN)
+When using Ajax to create a dynamic web page, it specifies which elements on the HTML/XML are to be changed. Therefore, DOM expands HTML and XML as a "tree structure" and conveys the information of the text to the application side, making it easier to process and change.
+
+### XML
+XML stands for Extensible Markup Language.
+One of the markup languages for describing the meaning and structure of documents and data (similar to HTML)
+
+
+***
+
+
+The following actions can be performed without screen transitions!
+1. communication with the server side: send a request to the server without reloading the page and perform another process while waiting for the response from the server
+2. data exchange: request and receive "missing parts = some information required for update" from the server, and rewrite and display the part of the information
+3. page update
+
+An example is Google Maps.
+
+## Difference between synchronous communication and asynchronous communication
+In synchronous communication videos, when you search for a place you want to find, the entire page goes blank for a moment, and then it is displayed.
+On the other hand, in asynchronous video, when you move the cursor to the place you want to find, the map of the destination will be displayed without reloading the page.
+
+### Synchronous communication
+Synchronous communication is a communication method that matches the timing of transmission and reception.
+1. the page is reloaded
+2. the next request cannot be sent until the round trip from request to response is completed, so no other operations can be performed until one process is completed.
+Because the entire page is created and displayed from scratch, the client waits from the time the request is made until the response is received.
+
+### Asynchronous Communication
+Asynchronous communication is a communication method that shifts the timing of transmission and reception. 1.
+(1) There is no reloading of the page, and other operations can be performed while waiting for the response.
+2. even if the round trip from request to response is not completed, the next request can be sent, so it is possible to perform other operations without waiting for one process to be completed.
+
+
+
+
+***See also
+See also
+[JavaScript Basics] Fetch API Basics](https://kde.hateblo.jp/entry/2018/10/22/010811),
+[Ajax explained from a beginner's perspective](https://qiita.com/hisamura333/items/e3ea6ae549eb09b7efb9),
+[JAVASCRIPT.INFO](https://ja.javascript.info/network) Translated with www.DeepL.com/Translator (free version)
+
+***
+***
+
+
 # Fetch API
 > ES2015以降に導入されたPromise（非同期処理）をベースに設計された機能
 ここでの「非同期処理」はAjaxのような「ページを遷移しない」という意味ではない。
