@@ -36,9 +36,9 @@
 
 # Learn fetch API / Ajax(XHR)
 
-- [Fetch API](/LearnFetchAPIAndAjax(XHR)#fetch-api)
+- [Fetch API](./LearnFetchAPIAndAjax(XHR)#fetch-api)
 
-- [XMLHttpRequest](#xmlhttprequest)
+- [XMLHttpRequest](./LearnFetchAPIAndAjax(XHR)#xmlhttprequest)
 
 # ES6+ and modular JavaScript
 JavaScript と EcmaScript
