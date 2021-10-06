@@ -37,10 +37,12 @@
 # Learn fetch API / Ajax(XHR)
 
 - [Fetch API](./LearnFetchAPIAndAjax(XHR)#fetch-api)
+[fetchの書き方](./LearnFetchAPIAndAjax(XHR)/FetchAPI)
 
 - [XMLHttpRequest](./LearnFetchAPIAndAjax(XHR)#xmlhttprequest)
 
 - [How to use API](./LearnFetchAPIAndAjax(XHR)/HowToUseAPI)
+[async/await](./LearnFetchAPIAndAjax(XHR)/AsyncAwait)
 
 # ES6+ and modular JavaScript
 JavaScript と EcmaScript
@@ -58,7 +60,7 @@ ES2015（ES6）での大きな仕様変更
 クラス
 DOM
 Strict モード
-分割代入
+分割代入(Spread operator)
 map()
 Array.includes()[ES7]
 べき乗演算子[ES7]
