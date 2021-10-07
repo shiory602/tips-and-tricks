@@ -1,3 +1,306 @@
+# Notation of Statement
+> Elements of programming language syntax are classified as expressions and statements.
+## Difference between Expression and Statement
+- Expression: A value can be generated and a variable can be assigned an evaluated value of that value.
+```js
+// Display the evaluated value of the expression 1
+console.log(1);
+// Assign the evaluated value of the expression to a variable
+const total = 1 + 1;
+// Assign the evaluated value of the function expression (function object) to a variable
+const fn = function() {
+  return 1;
+};
+// Display the evaluated value of the expression fn()
+console.log(fn()); // 1
+```
+- Statement: Each step in a process (such as an if or for statement).
+  - Distinguish between statements by writing `;` at the end of each statement line.
+  - A statement cannot be assigned to a variable.
+  - A statement enclosed in `{}` is called a block statement.
+```js
+// Combination of if statement and block statement
+if (true) {
+  console.log("hi");
+}
+
+// statement doesn't end in a block, so it needs a semicolon
+if (true) console.log(true);
+// statement ends in a block, so no semicolon needed
+if (true) {
+    console.log(true);
+}
+```
+### function statements and function expressions
+"A statement ending in a block doesn't need a;.
+```js
+// Function declaration statement to declare the learn function
+function learn() {
+}
+// Assign the function expression to the read variable
+const read = function() {
+};
+```
+In the above expression, the anonymous function named function is an "expression", and the processing done here is part of the statement that declares the variable named **read**. Since the whole thing is an **expression**, it is necessary to add `;` at the end of the sentence.
+
+[JavaScript Primer](https://jsprimer.net/basic/statement-expression/)
+***
+
+## Semicolon
+> Always add a semicolon `;` at the end of a statement.
+You can omit the semicolon, but it makes sentence breaks unclear, so it should be added unless there is a special reason.
+```JS
+window.alert("hello world!")
+// Not an error, but deprecated.
+```
+
+## Comments
+> Comments are memo-like information that is not related to the behavior of the script.
+They help you get an overview of what the code is doing, what the purpose of the > description is, and so on.
+> It is also useful for debugging.
+
+### JavaScript comment syntax
+
+| Notation | Description |
+| --- | --- |
+| `// comment` | Single comment. "It is recommended that you use `//` to the end of a line as a comment. |
+| `/* comment */` | Multi-line comment. A block enclosed by "`/* ~ */`" is considered a comment (no nesting allowed). |
+| `/** comment **/` | Documentation comment. A block surrounded by "`/** ~ */`" is regarded as a comment.
+
+```js
+// This is a comment.
+/* This is a comment.
+　　You can also use */
+// window.alert("hello,world");
+```
+
+## Whitespaces and line breaks
+If a sentence is long, you can add a line break or indent (tab/whitespace) in the middle of the sentence.
+```js
+window.
+  alert
+    ("hello, world");
+```
+Note that you can only start a new line after a meaningful word or symbol.
+```js
+win
+dow.alert("hello,world");
+// error
+```
+It is possible to write multiple statements in a single line, but it is not recommended.
+Basic Statements are made on each line and terminated with `;`.
+**The rule of thumb is to write only one statement per line.
+
+
+
+### Variable
+### Difference between var and let/const
+- To be saved in window or not
+```js
+var test = "test";
+let test2 = "test2";
+const test3 = "test3";
+console.log(window.test); // test
+console.log(window.test2); // undefined
+console.log(window.test3); // undefined
+```
+- You can also declare global variables when you declare them in a block {}.
+```js
+const func = () = > {
+  var test = "test";
+  let test2 = "test2";
+  const test3 = "test3";
+}
+console.log(test) // test
+console.log(test1) // undefined
+console.log(test2) // undefined
+```
+- Call before declaration in Hoisting
+```js
+console.log(a, "a"); // Hoisted
+console.log(b, "b"); // Temporal Dead Zone
+console.log(c, "c"); // Temporal dead zone
+var a = "1";
+let b = "2";
+const c = "3";
+```
+
+
+### let/const
+
+## Var.
+> A variable is like a box that stores values.
+> Variables can be **var** or **let**.
+> Use **const** for constants.
+
+In order to use a variable, you need to declare it first.
+> var variable name [= initial value] , ...
+```js
+var msg;
+var x, y;
+var msg = "hello, javascript";
+```
+What you can do
+- Declare multiple items separated by commas
+- Set the initial value in the declaration
+
+If you don't set the initial value, the variable will be filled with **undefined** by default.
+Since ES2015, let is used.
+
+
+## let
+Basically the same as `var`, but does not allow variables with the same name.
+```js
+let msg = "hi";
+let msg = "hello";
+// Identifier 'msg' has already been declared
+```
+
+
+## const
+Cannot change the content.
+> const constant name = value
+If you want to know the tax-included price of an item with 8% sales tax, use
+```js
+const TAX = 1.08;
+var price = 100;
+console.log(price * TAX); // 108
+```
+
+### Naming Conventions
+- Naming conventions for identifiers (the names given to the elements of a script)
+  The first character must be one of the following: English letter, underscore (_), or dollar sign ($). 2.
+  The second character must be either a letter or a number that can be used in the first character. 3.
+  3. the age in the variable name is case-sensitive.
+  4. not a reserved word that has a meaning in JavaScript (class, for, if, etc.)
+- Main Notations of Identifiers
+
+| Notation | Overview | Examples | Usage |
+| --- | --- | --- | | --- |
+| The first letter of the first word must be lower case, and the first letter of the following words must be upper case | lastName | variable/function name | Pascal notation |
+| The first letter of the first word is lowercase, and the first letter of subsequent words is uppercase.
+| underscore notation | concatenate words with "_" | last_name, LAST_NAME | constant name
+
+
+# Data Types
+Data types are the types of data.
+
+## Major data types
+## Primitive Data Types
+
+| Data types are data types. |
+| --- | --- |
+| number | ±4.94065645841246544e-324 ~ ±1.79769313486231570e308 |
+| A string is a set of zero or more characters enclosed in single or double quotation marks.
+| boolean | true/false |
+| symbol
+| If you want to use an object that has the same name as the object, you can use the following methods.
+| If you want to use an object with a special type, use the following type.
+
+### Reference Types (Composite Data Types)
+
+| Data Types |
+| --- | --- |
+| A set of data (each element can be accessed by an index number)
+| The following table describes the types of data types that can be used in a database.
+| A function is a sequence of operations (procedures).
+
+
+## literal
+A value itself that can be stored in a data type, or a way of representing a value.
+
+## Numeric literals (number)
+- Integer literals (integer): decimal numbers (decimals) are basic. There are also binary, octal, and hexadecimal numbers.
+- Floating point literals: can be decimal or exponential.
+
+### character literals (strings)
+- Single-quote `'` and double-quote `"`: If a string contains either of these, enclose it in quotation marks of the one not included in the string.
+- Escape sequences: Characters with special meanings are expressed in the form "\ + character". (Escaping)
+```js
+console.log('He\'s Hero!');
+```
+- Template strings: You can also embed variables by enclosing them in `(backtics)'.
+```js
+let name = "Suzuki";
+let str = `Hello, ${name}-san.
+It's another beautiful day! `;
+console.log(str);
+
+// Hello, Mr. Suzuki.
+// It's another beautiful day!
+```
+- Array literal: a set of data (elements) with indices starting from 0. You can also have nested arrays as elements.
+```js
+var data = ["JavaScriipt", ["apple", "banana"], "Ajax", "css"];
+console.log(data[1][0]); // apple
+```
+- Object literals: arrays that can be accessed by name as keys (the individual data are called **properties**). Also called a hash/associative array; properties with functions stored in them are called **methods**.
+```js
+var obj = { x:1, y:2, z:3 };
+console.log(obj.x); // 1 dot operator
+console.log(obj["x"]); // 1 bracket syntax
+```
+- function literal: A mechanism that, given an input value (argument), performs a predetermined operation and returns a result (return value).
+- undefined: A value that indicates that the value of a variable is undefined.
+```js
+var x;
+var obj = { a:12345 };
+console.log(x); // undefined (no value is set)
+console.log(obj.b); // undefined (property does not exist)
+```
+- null: no corresponding value was found (empty)
+
+
+# Operators
+Operators are symbols used to perform some predetermined operation on a given variable/literal.
+A variable/literal that is processed by an operator is called an operand (operator).
+
+### Arithmetic Operators
+| Arithmetic Operators |
+| --- | --- |
+| + | Addition |
+| - | Subtraction |
+| * | Multiplication |
+| / | Division |
+| % | Modulus |
+| ++ | Increment |
+| -- | Decrement|
+
+```JS
+var num1 = 5;
+var num2 = 6;
+
+num1 + num2;
+//returns 11
+
+num2 % num1;
+//returns 1
+```
+
+### Assignment Operators (assignment operators)
+
+| Assignment Operators |
+| --- | --- |
+| = | Assignment Operators |
+| -= | Assign subtraction |
+| Assign the result of multiplication. |
+| Assign a multiplication or division. |
+
+```JS
+var num1 = 7;
+// num1 would return 7
+
+num1 += 9;
+// num1 would return 7 + 9 = 16
+```
+
+
+[W3schools](https://www.w3schools.com/js/js_syntax.asp)
+
+
+***
+***
+
 # Statement（文）の記法
 > プログラミング言語の構文の要素は、式と文に分類される
 ## ExpressionとStatementの違い
@@ -93,6 +396,39 @@ dow.alert("hello,world");
 
 
 # Variable
+### var と　let/const の違い
+- windowに保存されるかされないか
+```js
+var test = "test";
+let test2 = "test2";
+const test3 = "test3";
+console.log(window.test); // test
+console.log(window.test2); // undefined
+console.log(window.test3); // undefined
+```
+- ブロック{}内で宣言した時もグローバル変数
+```js
+const func = () = > {
+  var test = "test";
+  let test2 = "test2";
+  const test3 = "test3";
+}
+console.log(test) // test
+console.log(test1) // undefined
+console.log(test2) // undefined
+```
+- Hoistingで宣言前に呼び出す
+```js
+console.log(a, "a"); // Hoisted
+console.log(b, "b"); // Temporal Dead Zone
+console.log(c, "c"); // Temporal dead Zone
+var a = "1";
+let b = "2";
+const c = "3";
+```
+
+
+### let/const
 
 ## Var
 > Variable（変数）は値を保存する箱のようなもの
